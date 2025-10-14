@@ -75,7 +75,7 @@ public class Scanner {
     while (isAlphaNumeric(peek())) advance();
         
         String id = new String(input, start, current-start);
-        return new Token(TokenType.IDENT, id);
+        return new Token(Token.TokenType.IDENT, id);
     }
 
     private void skipWhitespace() {
