@@ -16,7 +16,7 @@ public class Token {
 
         // Literals.
         NUMBER,
-        
-            EOF
+        IDENT,
+        EOF;
     }
 }
