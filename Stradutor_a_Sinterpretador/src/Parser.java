@@ -16,7 +16,7 @@ public class Parser {
         expr();
     }
 
-    private void match(TokenType t) {
+    private void match(Token.TokenType t) {
         if (currentToken.type == t) {
             nextToken();
         }else {
@@ -30,17 +30,17 @@ public class Parser {
     }
     void number () {
         System.out.println("push " + currentToken.lexeme);
-        match(TokenType.NUMBER);
+        match(Token.TokenType.NUMBER);
     }
 
     void oper () {
-        if (currentToken.type == TokenType.PLUS) {
-            match(TokenType.PLUS);
+        if (currentToken.type == Token.TokenType.PLUS) {
+            match(Token.TokenType.PLUS);
             number();
             System.out.println("add");
             oper();
-        } else if (currentToken.type == TokenType.MINUS) {
-            match(TokenType.MINUS);
+        } else if (currentToken.type == Token.TokenType.MINUS) {
+            match(Token.TokenType.MINUS);
             number();
             System.out.println("sub");
             oper();
