@@ -23,7 +23,7 @@ public class Scanner {
         char ch = peek();
         if (ch == '0') {
             advance();
-            return new Token (TokenType.NUMBER, Character.toString(ch));
+            return new Token (Token.TokenType.NUMBER, Character.toString(ch));
         }  else if (Character.isDigit(ch))
             return number();
            
@@ -32,12 +32,12 @@ public class Scanner {
         switch (ch) {
                 case '+':
                     advance();
-                    return new Token (TokenType.PLUS,"+");
+                    return new Token (Token.TokenType.PLUS,"+");
                 case '-':
                     advance();
-                    return new Token (TokenType.MINUS,"-");
+                    return new Token (Token.TokenType.MINUS,"-");
                 case '\0':
-                    return new Token (TokenType.EOF,"EOF");
+                    return new Token (Token.TokenType.EOF,"EOF");
                 default:
                      throw new Error("lexical error at " + ch);
         }
@@ -50,6 +50,6 @@ public class Scanner {
         }
         
         String n = new String(input, start, current-start)  ;
-        return new Token(TokenType.NUMBER, n);
+        return new Token(Token.TokenType.NUMBER, n);
     }
 }
