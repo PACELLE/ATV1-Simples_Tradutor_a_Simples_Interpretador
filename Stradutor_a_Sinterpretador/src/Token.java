@@ -19,6 +19,7 @@ public class Token {
         IDENT,
         
         LET,
+        PRINT,
 
         EOF
     }

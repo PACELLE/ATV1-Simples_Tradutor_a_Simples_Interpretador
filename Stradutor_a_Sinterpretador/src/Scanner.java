@@ -9,6 +9,7 @@ public class Scanner {
     static {
         keywords = new HashMap<>();
         keywords.put("let",    Token.TokenType.LET);
+        keywords.put("print",    Token.TokenType.PRINT);
     }
     
 
@@ -66,7 +67,6 @@ public class Scanner {
                 case '=':
                     advance();
                     return new Token (Token.TokenType.EQ,"=");
-
                 case ';':
                     advance();
                     return new Token (Token.TokenType.SEMICOLON,";");

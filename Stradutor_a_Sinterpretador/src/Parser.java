@@ -13,7 +13,7 @@ public class Parser {
     }
 
     public void parse () {
-        letStatement();
+        statements();
     }
 
     private void match(Token.TokenType t) {
@@ -67,4 +67,28 @@ public class Parser {
         System.out.println("pop "+id);
         match(Token.TokenType.SEMICOLON);
     }
+
+    void printStatement () {
+        match(Token.TokenType.PRINT);
+        expr();
+        System.out.println("print");
+        match(Token.TokenType.SEMICOLON);
+    }
+
+    void statement () {
+        if (currentToken.type == Token.TokenType.PRINT) {
+            printStatement();
+        } else if (currentToken.type == Token.TokenType.LET) {
+            letStatement();
+        } else {
+            throw new Error("syntax error");
+        }
+    }
+
+    void statements () {
+        
+        while (currentToken.type != Token.TokenType.EOF) {
+            statement();
+        }
+   }
 }
