@@ -2,6 +2,8 @@ public class Parser {
     
     private Scanner scan;
     private Token currentToken;
+    private StringBuilder output = new StringBuilder();
+
 
     public Parser(byte[] input) {
         scan = new Scanner(input);
@@ -29,7 +31,7 @@ public class Parser {
         oper();
     }
     void number () {
-        System.out.println("push " + currentToken.lexeme);
+        output.append("push " + currentToken.lexeme + "\n");
         match(Token.TokenType.NUMBER);
     }
 
@@ -37,7 +39,7 @@ public class Parser {
             if (currentToken.type == Token.TokenType.NUMBER)
                 number();
             else if (currentToken.type == Token.TokenType.IDENT) {
-                System.out.println("push "+currentToken.lexeme);
+                output.append("push " + currentToken.lexeme + "\n");
                 match(Token.TokenType.IDENT);
             }
             else
@@ -48,12 +50,12 @@ public class Parser {
         if (currentToken.type == Token.TokenType.PLUS) {
             match(Token.TokenType.PLUS);
             term();
-            System.out.println("add");
+            output.append("add\n");
             oper();
         } else if (currentToken.type == Token.TokenType.MINUS) {
             match(Token.TokenType.MINUS);
             term();
-            System.out.println("sub");
+            output.append("sub\n");
             oper();
         } 
     }
@@ -64,14 +66,14 @@ public class Parser {
         match(Token.TokenType.IDENT);
         match(Token.TokenType.EQ);
         expr();
-        System.out.println("pop "+id);
+        output.append("pop " + id + "\n");
         match(Token.TokenType.SEMICOLON);
     }
 
     void printStatement () {
         match(Token.TokenType.PRINT);
         expr();
-        System.out.println("print");
+        output.append("print\n");
         match(Token.TokenType.SEMICOLON);
     }
 
@@ -90,5 +92,10 @@ public class Parser {
         while (currentToken.type != Token.TokenType.EOF) {
             statement();
         }
-   }
+}
+
+    public String output() {
+        return output.toString().strip();
+    }
+
 }
