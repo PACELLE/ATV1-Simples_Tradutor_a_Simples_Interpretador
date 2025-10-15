@@ -13,7 +13,7 @@ public class Parser {
     }
 
     public void parse () {
-        expr();
+        letStatement();
     }
 
     private void match(Token.TokenType t) {
@@ -32,7 +32,7 @@ public class Parser {
         System.out.println("push " + currentToken.lexeme);
         match(Token.TokenType.NUMBER);
     }
-    
+
     void term () {
             if (currentToken.type == Token.TokenType.NUMBER)
                 number();
@@ -56,5 +56,15 @@ public class Parser {
             System.out.println("sub");
             oper();
         } 
+    }
+
+    void letStatement () {
+        match(Token.TokenType.LET);
+        var id = currentToken.lexeme;
+        match(Token.TokenType.IDENT);
+        match(Token.TokenType.EQ);
+        expr();
+        System.out.println("pop "+id);
+        match(Token.TokenType.SEMICOLON);
     }
 }
