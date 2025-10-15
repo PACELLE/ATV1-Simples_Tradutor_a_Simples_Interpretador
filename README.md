@@ -28,7 +28,7 @@ ATV1-Simples_Tradutor_a_Simples_Interpretador/
 │   ├─ Parser.java        # Analisador sintático
 │   ├─ Scanner.java       # Analisador léxico
 │   ├─ Token.java         # Definição dos tokens
-│   └─ Main.java          # Classe principal
+│   └─ App.java          # Classe principal
 │
 ├─ test/                 # Exemplos e testes
 │   └─ exemplos.txt
@@ -45,59 +45,3 @@ ATV1-Simples_Tradutor_a_Simples_Interpretador/
 
 ---
 
-## Como Rodar
-
-1. Clone o repositório:
-
-```bash
-git clone https://github.com/PACELLE/ATV1-Simples_Tradutor_a_Simples_Interpretador.git
-cd ATV1-Simples_Tradutor_a_Simples_Interpretador
-```
-
-2. Compile os arquivos Java:
-
-```bash
-javac src/*.java
-```
-
-3. Execute o programa:
-
-```bash
-java src.Main
-```
-
-4. Insira o código da linguagem no terminal ou use arquivos de teste.
-
----
-
-## Exemplo de Uso
-
-Código de exemplo na linguagem simplificada:
-
-```
-INICIO
-   IMPRIMIR "Olá, Mundo!"
-FIM
-```
-
-Saída esperada:
-
-```
-Olá, Mundo!
-```
-
----
-
-## Extensões Futuras
-
-* Suporte a expressões matemáticas mais complexas.
-* Controle de fluxo (if, while).
-* Suporte a variáveis e tipos de dados.
-* Geração de bytecode ou tradução para outra linguagem.
-
----
-
-## Autor
-
-**Pacelle Henrique**
-Projeto desenvolvido como exercício acadêmico para estudo de compiladores e interpretadores simples.
