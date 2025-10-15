@@ -1,6 +1,16 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class Scanner {
     private byte[] input;
     private int current; 
+    private static final Map<String, Token.TokenType> keywords;
+
+    static {
+        keywords = new HashMap<>();
+        keywords.put("let",    Token.TokenType.LET);
+    }
+    
 
 	public Scanner (byte[] input) {
         this.input = input;
@@ -78,12 +88,14 @@ public class Scanner {
     }
 
     private Token identifier() {
-    int start = current;
-    while (isAlphaNumeric(peek())) advance();
-        
-        String id = new String(input, start, current-start);
-        return new Token(Token.TokenType.IDENT, id);
-    }
+        int start = current;
+        while (isAlphaNumeric(peek())) advance();
+    
+        String id = new String(input, start, current-start)  ;
+        Token.TokenType type = keywords.get(id);
+        if (type == null) type = Token.TokenType.IDENT;
+        return new Token(type, id);
+  }
 
     private void skipWhitespace() {
         char ch = peek();
