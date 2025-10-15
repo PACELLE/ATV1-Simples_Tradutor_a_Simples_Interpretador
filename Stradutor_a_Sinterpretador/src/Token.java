@@ -12,7 +12,7 @@ public class Token {
     }
 
     public enum TokenType {
-        PLUS,MINUS,
+        PLUS,MINUS, EQ, SEMICOLON,
 
         // Literals.
         NUMBER,

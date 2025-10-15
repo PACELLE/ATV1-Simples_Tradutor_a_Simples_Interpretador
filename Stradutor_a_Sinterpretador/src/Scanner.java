@@ -53,6 +53,13 @@ public class Scanner {
                 case '-':
                     advance();
                     return new Token (Token.TokenType.MINUS,"-");
+                case '=':
+                    advance();
+                    return new Token (Token.TokenType.EQ,"=");
+
+                case ';':
+                    advance();
+                    return new Token (Token.TokenType.SEMICOLON,";");
                 case '\0':
                     return new Token (Token.TokenType.EOF,"EOF");
                 default:
