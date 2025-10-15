@@ -25,23 +25,34 @@ public class Parser {
    }
 
     void expr() {
-        number();
+        term();
         oper();
     }
     void number () {
         System.out.println("push " + currentToken.lexeme);
         match(Token.TokenType.NUMBER);
     }
+    
+    void term () {
+            if (currentToken.type == Token.TokenType.NUMBER)
+                number();
+            else if (currentToken.type == Token.TokenType.IDENT) {
+                System.out.println("push "+currentToken.lexeme);
+                match(Token.TokenType.IDENT);
+            }
+            else
+                throw new Error("syntax error");
+        }
 
     void oper () {
         if (currentToken.type == Token.TokenType.PLUS) {
             match(Token.TokenType.PLUS);
-            number();
+            term();
             System.out.println("add");
             oper();
         } else if (currentToken.type == Token.TokenType.MINUS) {
             match(Token.TokenType.MINUS);
-            number();
+            term();
             System.out.println("sub");
             oper();
         } 
